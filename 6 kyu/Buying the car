@@ -1,0 +1,16 @@
+function nbMonths(startPriceOld, startPriceNew, savingperMonth, percentLossByMonth){
+  //your code here
+  var month=0;
+  var totsave=0;
+  
+  while((totsave+startPriceOld) < startPriceNew){
+    month+=1;
+    if(month%2==0){
+      percentLossByMonth+=0.5;
+    }
+    totsave+=savingperMonth;
+    startPriceOld -= startPriceOld*(percentLossByMonth/100);
+    startPriceNew -= startPriceNew*(percentLossByMonth/100);
+  }
+  return [month, Math.round(totsave + startPriceOld - startPriceNew)];
+}
